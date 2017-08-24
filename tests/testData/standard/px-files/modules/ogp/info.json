@@ -1,0 +1,11 @@
+{
+    "name": "OGP Modules",
+    "sort":[
+        "ogp-title",
+        "ogp-type",
+        "ogp-url",
+        "ogp-image",
+        "ogp-site_name",
+        "ogp-description"
+    ]
+}

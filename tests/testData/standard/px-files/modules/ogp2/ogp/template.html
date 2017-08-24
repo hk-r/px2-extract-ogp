@@ -1,0 +1,25 @@
+{&{"input":{"type":"multitext","name":"og-title","label":"title","rows":"1","hidden":true}}&}
+<div class="og-title">
+<?php ob_start(); ?>
+ああああ
+<?php $px->bowl()->put( ob_get_clean(), 'og:title'); ?></div>
+<div class="og-description">{&{"input":{"type":"multitext","name":"og-description","label":"description","rows":"1","editor":"text"}}&}
+<?php ob_start(); ?>
+og:description
+<?php $px->bowl()->put( ob_get_clean(), 'og:description'); ?></div>
+<div class="og-image">
+    og:image
+    <img src="{&{"input":{"type":"image","name":"og-image","lagel":"image"}}&}" />
+</div>
+<div class="og-type">
+    og:type
+    {&{"input":{"type":"multitext","name":"og-type","label":"type","rows":"1","editor":"text"}}&}
+</div>
+<div class="og-url">
+    og:url
+    {&{"input":{"type":"multitext","name":"og-url","label":"URL","rows":"1","editor":"text"}}&}
+</div>
+<div class="og-site_name">
+    og:site_name
+    {&{"input":{"type":"multitext","name":"og-site_name","label":"site name","rows":"1","editor":"text"}}&}
+</div>

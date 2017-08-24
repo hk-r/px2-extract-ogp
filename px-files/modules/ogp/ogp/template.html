@@ -1,0 +1,65 @@
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+[og:title]<div class="og-title">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-title","label":"title","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:title'); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+{&"endif"&}
+
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+[og:description]<div class="og-description">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-description","label":"description","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:description'); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+{&"endif"&}
+
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+[og:image]<div class="og-image">
+{&"endif"&}
+<?php ob_start(); ?><img src="{&{"input":{"type":"image","name":"og-image","lagel":"image"}}&}" />
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:image'); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+{&"endif"&}
+
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+[og:type]<div class="og-type">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-type","label":"type","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:type'); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+{&"endif"&}
+
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+[og:url]<div class="og-url">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-url","label":"URL","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:url'); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+{&"endif"&}
+
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+[og:site_name]<div class="og-site_name">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-site_name","label":"site name","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:site_name'); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+{&"endif"&}
