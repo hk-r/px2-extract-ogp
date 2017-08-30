@@ -16,34 +16,19 @@
       "dec": ""
      },
      {
-      "modId": "local:ogp2/ogp",
+      "modId": "local:ogp/ogp",
       "fields": {
-       "og-title": {
-        "src": "fsdfa",
-        "editor": "markdown"
-       },
-       "og-description": {
-        "src": "",
-        "editor": "markdown"
-       },
+       "og-title": "aaa",
+       "og-description": "bbb",
        "og-image": {
-        "resKey": "963c3637069c068cbe77b5612ec3db25",
-        "path": "./index_files/resources/963c3637069c068cbe77b5612ec3db25.txt",
+        "resKey": "c8b7f1ef4fbdbf961333dbbc475dfaa8",
+        "path": "./index_files/resources/download.jpg",
         "resType": "",
         "webUrl": ""
        },
-       "og-type": {
-        "src": "",
-        "editor": "markdown"
-       },
-       "og-url": {
-        "src": "",
-        "editor": "markdown"
-       },
-       "og-site_name": {
-        "src": "",
-        "editor": "markdown"
-       }
+       "og-type": "ccc",
+       "og-url": "ddd",
+       "og-site_name": "eee"
       },
       "anchor": "",
       "dec": ""

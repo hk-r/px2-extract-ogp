@@ -1,23 +1,32 @@
 <p>このカテゴリには、いくつかの練習ページが用意されています。</p>
 <p>これらのページは、まだコンテンツが作られていません。 コンテンツファイルが存在しないページにアクセスすると、<q>404 - File not found.</q> のような文言が表示されるはずです。</p>
 <p>新しくコンテンツファイルを作成して、ページを完成させてください。</p>
-<div class="og-title">
-<?php ob_start(); ?>
-ああああ
-<?php $px->bowl()->put( ob_get_clean(), 'og:title'); ?></div>
-<div class="og-description"><?php ob_start(); ?>
-og:description
-<?php $px->bowl()->put( ob_get_clean(), 'og:description'); ?></div>
-<div class="og-image">
-    og:image
-    <img src="./index_files/resources/963c3637069c068cbe77b5612ec3db25.txt" />
-</div>
-<div class="og-type">
-    og:type
-    </div>
-<div class="og-url">
-    og:url
-    </div>
-<div class="og-site_name">
-    og:site_name
-    </div>
+
+<?php ob_start(); ?>aaa<?php $px->bowl()->put( ob_get_clean(), 'og:title'); ?>
+
+
+
+
+<?php ob_start(); ?>bbb<?php $px->bowl()->put( ob_get_clean(), 'og:description'); ?>
+
+
+
+
+<?php ob_start(); ?><img src="./index_files/resources/download.jpg" />
+<?php $px->bowl()->put( ob_get_clean(), 'og:image'); ?>
+
+
+
+
+<?php ob_start(); ?>ccc<?php $px->bowl()->put( ob_get_clean(), 'og:type'); ?>
+
+
+
+
+<?php ob_start(); ?>ddd<?php $px->bowl()->put( ob_get_clean(), 'og:url'); ?>
+
+
+
+
+<?php ob_start(); ?>eee<?php $px->bowl()->put( ob_get_clean(), 'og:site_name'); ?>
+

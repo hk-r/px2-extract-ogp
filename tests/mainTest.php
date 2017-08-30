@@ -28,14 +28,18 @@ class mainTest extends PHPUnit_Framework_TestCase{
 			__DIR__.'/testData/standard/.px_execute.php' ,
 			'/sample_pages/training/index.html' ,// picklesのrootからのパス
 		] );
-		//var_dump($output);
-		$this->assertEquals( 1, preg_match('/'.preg_quote('このカテゴリには','/').'/s', $output) );
-		// 
-		// $output = $this->passthru( [
-		// 	'php',
-		// 	__DIR__.'/testData/standard/.px_execute.php' ,
-		// 	'/?PX=clearcache' ,
-		// ] );
+		// var_dump($output);
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:title" content="aaa" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:description" content="bbb" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:image" content="./index_files/resources/download.jpg" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:type" content="ccc" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:site_name" content="eee" />','/').'/s', $output) );
+		
+		$output = $this->passthru( [
+			'php',
+			__DIR__.'/testData/standard/.px_execute.php' ,
+			'/?PX=clearcache' ,
+		] );
 	}//testStandardJade()
 
 	/**
@@ -48,18 +52,13 @@ class mainTest extends PHPUnit_Framework_TestCase{
 		foreach( $ary_command as $row ){
 			
 			$param = '"'.addslashes($row).'"';
-			//$param = $row;
-			//var_dump($param);
-
 			array_push( $cmd, $param );
 		}
 		$cmd = implode( ' ', $cmd );
-		// var_dump($cmd);
+
 		ob_start();
 		passthru( $cmd );
 		$bin = ob_get_clean();
-
-		//var_dump($bin);
 
 		return $bin;
 	}// passthru()

@@ -186,11 +186,6 @@ return call_user_func( function(){
 
 		// PX=px2dthelper
 		'tomk79\pickles2\px2dthelper\main::register' ,
-
-		// OGPタグ自動抽出
-		'hk\pickles2\extractOgp\extract::exec2' ,
-
-
 	);
 
 
@@ -206,7 +201,6 @@ return call_user_func( function(){
 	$conf->funcs->processor = new stdClass;
 
 	$conf->funcs->processor->html = array(
-
 		// ページ内目次を自動生成する
 		'picklesFramework2\processors\autoindex\autoindex::exec' ,
 
@@ -223,7 +217,7 @@ return call_user_func( function(){
 			'attr_bowl_name_by'=>'data-contents-area',
 			'default_theme_id'=>'pickles2'
 		]).')' ,
-
+		
 		// OGPタグ自動抽出
 		'hk\pickles2\extractOgp\extract::exec' ,
 

@@ -1,65 +1,125 @@
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-[og:title]<div class="og-title">
+<div style="border:1px solid #f00">
+<div style="color:#fff;background-color: #f00;padding:10px;font-weight: bold;">OGP設定エリア ※画面には表示されません。</div>
+<div style="padding:10px;">
+<div>
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:title</div><div class="og-title" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?>{&{"input":{"type":"text","name":"og-title","label":"title","rows":"1","editor":"text"}}&}
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:title'); ?>
+<?php $px->bowl()->put( ob_get_clean(), 'og:title' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div>
+</div></div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-[og:description]<div class="og-description">
+<div>
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:description</div><div class="og-description" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?>{&{"input":{"type":"text","name":"og-description","label":"description","rows":"1","editor":"text"}}&}
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:description'); ?>
+<?php $px->bowl()->put( ob_get_clean(), 'og:description' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div>
+</div></div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-[og:image]<div class="og-image">
+<div>
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:image</div><div class="og-image" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?><img src="{&{"input":{"type":"image","name":"og-image","lagel":"image"}}&}" />
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:image'); ?>
+<?php $px->bowl()->put( ob_get_clean(), 'og:image' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div>
+</div></div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-[og:type]<div class="og-type">
+<div>
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:type</div><div class="og-type" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?>{&{"input":{"type":"text","name":"og-type","label":"type","rows":"1","editor":"text"}}&}
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:type'); ?>
+<?php $px->bowl()->put( ob_get_clean(), 'og:type' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div>
+</div></div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-[og:url]<div class="og-url">
+<div>
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:url</div><div class="og-url" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?>{&{"input":{"type":"text","name":"og-url","label":"URL","rows":"1","editor":"text"}}&}
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:url'); ?>
+<?php $px->bowl()->put( ob_get_clean(), 'og:url' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div></div>
+{&"endif"&}
+
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+<div>
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:site_name</div><div class="og-site_name" style="padding:10px;">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-site_name","label":"site name","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php $px->bowl()->put( ob_get_clean(), 'og:site_name' ); ?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div></div>
+</div>
 </div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-[og:site_name]<div class="og-site_name">
+<div style="border:1px solid #f00">
+<div style="color:#fff;background-color: #f00;padding:10px;font-weight: bold;">OGPカスタム設定エリア ※画面には表示されません。</div>
 {&"endif"&}
-<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-site_name","label":"site name","rows":"1","editor":"text"}}&}
+{&{"loop":{"name":"og_loop", "label":"OGPカスタム設定"}}&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+<div style="padding:10px;">
+<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-custom-property","label":"property","rows":"1","editor":"text"}}&}
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:site_name'); ?>
+<?php 
+$custom_property = $px->bowl()->pull( 'og:custom-property' );
+$custom_property_ary;
+if ( $custom_property ) {
+	$custom_property_ary = json_decode( $custom_property );
+	array_push( $custom_property_ary, ob_get_clean() );
+} else{
+	$custom_property_ary = array( ob_get_clean() );
+}
+$px->bowl()->put( json_encode( $custom_property_ary ), 'og:custom-property' );
+?>
 {&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div><div style="padding:10px;">
+{&"endif"&}
+<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-custom-content","label":"content","rows":"1","editor":"text"}}&}
+{&{"if":{"cond":[["is_mode:finalize"]]}}&}
+<?php 
+$custom_content = $px->bowl()->pull( 'og:custom-content' );
+$custom_content_ary;
+if ($custom_content) {
+	$custom_content_ary = json_decode( $custom_content );
+	array_push( $custom_content_ary, ob_get_clean() );
+} else{
+	$custom_content_ary = array( ob_get_clean() );
+}
+$px->bowl()->put( json_encode( $custom_content_ary ), 'og:custom-content' );
+?>
+{&"endif"&}
+{&{"if":{"cond":[["is_mode:canvas"]]}}&}
+</div>
+</div>
+{&"endif"&}
+{&"endloop"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
 </div>
 {&"endif"&}
