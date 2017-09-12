@@ -1,6 +1,6 @@
 {
-    "name": "pickles2/preset-get-start-pickles2",
-    "description": "Pickles 2 は、静的で大きなウェブサイトを効率よく構築できる オープンソースのHTML生成ツールです。",
+    "name": "hk-r/px2-exract-ogp",
+    "description": "OGP情報を抽出するpickles2プラグインです。",
     "keywords": ["pickles2"],
     "license": "MIT",
     "authors": [
@@ -9,22 +9,27 @@
             "email": "tomk79@gmail.com"
         }
     ],
+    "scripts":{
+        "test": [
+            "php ./vendor/phpunit/phpunit/phpunit"
+        ]
+    } ,
     "repositories": [
     ],
     "require": {
-        "php": ">=5.4.0" ,
-        "broccoli-html-editor/broccoli-module-fess": "0.1.*",
-        "broccoli-html-editor/broccoli-module-plain-html-elements": "0.1.*",
-        "pickles2/px-fw-2.x": "^2.0",
-        "pickles2/px2-dec": "^2.0",
-        "pickles2/px2-multitheme": "^2.0",
-        "pickles2/px2-path-resolver": "^2.0",
-        "pickles2/px2-px2dthelper": "^2.0",
-        "pickles2/px2-remove-attr": "^2.0",
-        "pickles2/px2-sitemapexcel": "^2.0"
+        "php": ">=5.4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "5.7.*"
+        "phpunit/phpunit": "^4.1.0",
+        "broccoli-html-editor/broccoli-module-fess": "dev-develop",
+        "broccoli-html-editor/broccoli-module-plain-html-elements": "dev-develop",
+        "pickles2/px-fw-2.x": "dev-develop",
+        "pickles2/px2-dec": "dev-develop",
+        "pickles2/px2-multitheme": "dev-develop",
+        "pickles2/px2-path-resolver": "dev-develop",
+        "pickles2/px2-px2dthelper": "dev-develop",
+        "pickles2/px2-remove-attr": "dev-develop",
+        "pickles2/px2-sitemapexcel": "dev-develop"
     },
     "autoload": {
         "files": [
@@ -33,10 +38,8 @@
     },
     "extra": {
         "px2package": {
-            "name": "Get start \"Pickles 2\" !",
-            "type": "project",
-            "path": ".px_execute.php",
-            "path_homedir": "px-files/"
+            "name": "px2-exract-ogp",
+            "type": "processor"
         }
     }
 }

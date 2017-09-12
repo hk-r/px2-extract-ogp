@@ -19,12 +19,12 @@ class extract{
         foreach( $px->bowl()->get_keys() as $key ){
 
             $src = $px->bowl()->pull( $key );
-            
+
             // head要素の最後にスクリプトを追加
             if( preg_match( '/<\/head>/is', $src ) ){
 
-                $src = mb_convert_encoding( $src, mb_internal_encoding(), "auto" ); 
-                
+                $src = mb_convert_encoding( $src, mb_internal_encoding(), "auto" );
+
                 // if ( preg_match( '/class="og-title">(.*?)<\//is', $src, $matches) ) {
                 if ( $og_title = $px->bowl()->pull( 'og:title' ) ) {
 
@@ -47,11 +47,11 @@ class extract{
                         // 指定されたファイルの拡張子が画像ファイルか判定
                         if ( preg_match( "/.*?\.jpg|.*?\.png|.*?\.gif|.*?\.jpeg/i", $matches[1]) ) {
 
-                            $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . $matches[1] . '" />'.'</head>', $src );
+                            $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . $px->conf()->scheme.'://'.$px->conf()->domain.$px->href( $matches[1] ) . '" />'.'</head>', $src );
 
-                        }                        
+                        }
 
-                    }                
+                    }
 
                 }
 
@@ -67,6 +67,10 @@ class extract{
 
                     $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . $og_url . '" />'.'</head>', $src );
 
+                } else {
+
+                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . $px->conf()->scheme.'://'.$px->conf()->domain.$px->href( $px->req()->get_request_file_path() ) . '" />'.'</head>', $src );
+
                 }
 
                 // if ( preg_match( '/class="og-site_name">(.*?)<\//is', $src, $matches) ) {
@@ -80,7 +84,7 @@ class extract{
                 // カスタム
                 if ( ( $og_custom_property = $px->bowl()->pull( 'og:custom-property' )) &&
                      ( $og_custom_content = $px->bowl()->pull( 'og:custom-content' )) ) {
-                    
+
                     $og_custom_property_ary = json_decode($og_custom_property);
                     $og_custom_content_ary = json_decode($og_custom_content);
                     $count = 0;
@@ -96,9 +100,9 @@ class extract{
                         $count++;
                     }
                 }
-                
+
             }
-            
+
             $px->bowl()->replace( $src, $key );
         }
 
