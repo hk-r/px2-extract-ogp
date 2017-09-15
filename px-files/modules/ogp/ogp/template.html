@@ -1,8 +1,7 @@
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
 <div style="border:1px solid #f00">
 <div style="color:#fff;background-color: #f00;padding:10px;font-weight: bold;">OGP設定エリア ※画面には表示されません。</div>
-<div style="padding:10px;">
-<div>
+<div style="padding:10px; display:none;">
 <div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:title</div><div class="og-title" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?>{&{"input":{"type":"text","name":"og-title","label":"title","rows":"1","editor":"text"}}&}
@@ -10,11 +9,10 @@
 <?php $px->bowl()->put( ob_get_clean(), 'og:title' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div></div>
+</div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-<div>
 <div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:description</div><div class="og-description" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?>{&{"input":{"type":"text","name":"og-description","label":"description","rows":"1","editor":"text"}}&}
@@ -22,11 +20,10 @@
 <?php $px->bowl()->put( ob_get_clean(), 'og:description' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div></div>
+</div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-<div>
 <div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:image</div><div class="og-image" style="padding:10px;">
 {&"endif"&}
 <?php ob_start(); ?><img src="{&{"input":{"type":"image","name":"og-image","lagel":"image"}}&}" />
@@ -34,43 +31,22 @@
 <?php $px->bowl()->put( ob_get_clean(), 'og:image' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div></div>
+</div>
 {&"endif"&}
 
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-<div>
 <div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:type</div><div class="og-type" style="padding:10px;">
 {&"endif"&}
-<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-type","label":"type","rows":"1","editor":"text"}}&}
+<?php ob_start(); ?>{&{"input":{"type":"select", "name":"og-type", "label":"type", "options":[
+    {"value":"website", "label":"website"},
+    {"value":"blog", "label":"blog"},
+    {"value":"article", "label":"article"}
+]}}&}
 {&{"if":{"cond":[["is_mode:finalize"]]}}&}
 <?php $px->bowl()->put( ob_get_clean(), 'og:type' ); ?>
 {&"endif"&}
 {&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div></div>
-{&"endif"&}
-
-{&{"if":{"cond":[["is_mode:canvas"]]}}&}
-<div>
-<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:url</div><div class="og-url" style="padding:10px;">
-{&"endif"&}
-<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-url","label":"URL","rows":"1","editor":"text"}}&}
-{&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:url' ); ?>
-{&"endif"&}
-{&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div></div>
-{&"endif"&}
-
-{&{"if":{"cond":[["is_mode:canvas"]]}}&}
-<div>
-<div style="background-color: #000;padding: 5px;color: #fff;font-weight: bold;">og:site_name</div><div class="og-site_name" style="padding:10px;">
-{&"endif"&}
-<?php ob_start(); ?>{&{"input":{"type":"text","name":"og-site_name","label":"site name","rows":"1","editor":"text"}}&}
-{&{"if":{"cond":[["is_mode:finalize"]]}}&}
-<?php $px->bowl()->put( ob_get_clean(), 'og:site_name' ); ?>
-{&"endif"&}
-{&{"if":{"cond":[["is_mode:canvas"]]}}&}
-</div></div>
+</div>
 </div>
 </div>
 {&"endif"&}
