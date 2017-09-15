@@ -2,31 +2,53 @@
 <p>これらのページは、まだコンテンツが作られていません。 コンテンツファイルが存在しないページにアクセスすると、<q>404 - File not found.</q> のような文言が表示されるはずです。</p>
 <p>新しくコンテンツファイルを作成して、ページを完成させてください。</p>
 
-<?php ob_start(); ?>aaa<?php $px->bowl()->put( ob_get_clean(), 'og:title'); ?>
+<?php ob_start(); ?>タイトルを設定します<?php $px->bowl()->put( ob_get_clean(), 'og:title' ); ?>
 
 
 
 
-<?php ob_start(); ?>bbb<?php $px->bowl()->put( ob_get_clean(), 'og:description'); ?>
+<?php ob_start(); ?>descriptionを設定します<?php $px->bowl()->put( ob_get_clean(), 'og:description' ); ?>
 
 
 
 
-<?php ob_start(); ?><img src="./index_files/resources/download.jpg" />
-<?php $px->bowl()->put( ob_get_clean(), 'og:image'); ?>
+<?php ob_start(); ?><img src="./index_files/resources/test_image.jpg" />
+<?php $px->bowl()->put( ob_get_clean(), 'og:image' ); ?>
 
 
 
 
-<?php ob_start(); ?>ccc<?php $px->bowl()->put( ob_get_clean(), 'og:type'); ?>
+<?php ob_start(); ?>website<?php $px->bowl()->put( ob_get_clean(), 'og:type' ); ?>
 
 
 
 
-<?php ob_start(); ?>ddd<?php $px->bowl()->put( ob_get_clean(), 'og:url'); ?>
 
 
+<?php ob_start(); ?>og:custome1<?php 
+$custom_property = $px->bowl()->pull( 'og:custom-property' );
+$custom_property_ary;
+if ( $custom_property ) {
+	$custom_property_ary = json_decode( $custom_property );
+	array_push( $custom_property_ary, ob_get_clean() );
+} else{
+	$custom_property_ary = array( ob_get_clean() );
+}
+$px->bowl()->put( json_encode( $custom_property_ary ), 'og:custom-property' );
+?>
 
 
-<?php ob_start(); ?>eee<?php $px->bowl()->put( ob_get_clean(), 'og:site_name'); ?>
+<?php ob_start(); ?>カスタム項目1<?php 
+$custom_content = $px->bowl()->pull( 'og:custom-content' );
+$custom_content_ary;
+if ($custom_content) {
+	$custom_content_ary = json_decode( $custom_content );
+	array_push( $custom_content_ary, ob_get_clean() );
+} else{
+	$custom_content_ary = array( ob_get_clean() );
+}
+$px->bowl()->put( json_encode( $custom_content_ary ), 'og:custom-content' );
+?>
+
+
 

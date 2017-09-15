@@ -1,0 +1,4 @@
+language: php # Œ¾Œê
+php:
+- 5.4
+script: phpunit # ‚±‚Ìˆ—‚ªCI‚Æ‚µ‚Ä‘–‚é

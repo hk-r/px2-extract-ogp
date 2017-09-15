@@ -28,19 +28,21 @@ class mainTest extends PHPUnit_Framework_TestCase{
 			__DIR__.'/testData/standard/.px_execute.php' ,
 			'/sample_pages/training/index.html' ,// picklesのrootからのパス
 		] );
-		// var_dump($output);
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:title" content="aaa" />','/').'/s', $output) );
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:description" content="bbb" />','/').'/s', $output) );
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:image" content="./index_files/resources/download.jpg" />','/').'/s', $output) );
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:type" content="ccc" />','/').'/s', $output) );
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:site_name" content="eee" />','/').'/s', $output) );
+		
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:custome1" content="カスタム項目1" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:title" content="タイトルを設定します" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:description" content="descriptionを設定します" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:image" content="http:///sample_pages/training/index_files/resources/test_image.jpg" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:type" content="website" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:url" content="http:///sample_pages/training/" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:site_name" content="Get start &quot;Pickles 2&quot; !" />','/').'/s', $output) );
 		
 		$output = $this->passthru( [
 			'php',
 			__DIR__.'/testData/standard/.px_execute.php' ,
 			'/?PX=clearcache' ,
 		] );
-	}//testStandardJade()
+	}//testStandardOGP()
 
 	/**
 	 * 
