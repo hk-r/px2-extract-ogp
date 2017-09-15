@@ -20,85 +20,110 @@ class extract{
 
             $src = $px->bowl()->pull( $key );
 
-            // head要素の最後にスクリプトを追加
+            // head要素の最後にmetaを追加
             if( preg_match( '/<\/head>/is', $src ) ){
+
+                $custom_property_collection = array();
 
                 $src = mb_convert_encoding( $src, mb_internal_encoding(), "auto" );
 
-                // if ( preg_match( '/class="og-title">(.*?)<\//is', $src, $matches) ) {
-                if ( $og_title = $px->bowl()->pull( 'og:title' ) ) {
-
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:title" content="' . $og_title . '" />'.'</head>', $src );
-
-                }
-
-                // if ( preg_match( '/class="og-description">(.*?)<\//is', $src, $matches) ) {
-                if ( $og_description = $px->bowl()->pull( 'og:description' ) ) {
-
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:description" content="' . $og_description . '" />'.'</head>', $src );
-
-                }
-
-                // if ( preg_match( '/class="og-image">(.*?)<\//is', $src, $matches) ) {
-                if ( $og_image = $px->bowl()->pull( 'og:image' ) ) {
-
-                    if ( preg_match( '/<img.*src\s*=\s*[\"|\'](.*?)[\"|\'].*>/i', $og_image, $matches ) ) {
-
-                        // 指定されたファイルの拡張子が画像ファイルか判定
-                        if ( preg_match( "/.*?\.jpg|.*?\.png|.*?\.gif|.*?\.jpeg/i", $matches[1]) ) {
-
-                            $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . $px->conf()->scheme.'://'.$px->conf()->domain.$px->href( $matches[1] ) . '" />'.'</head>', $src );
-
-                        }
-
-                    }
-
-                }
-
-                // if ( preg_match( '/class="og-type">(.*?)<\//is', $src, $matches) ) {
-                if ( $og_type = $px->bowl()->pull( 'og:type' ) ) {
-
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:type" content="' . $og_type . '" />'.'</head>', $src );
-
-                }
-
-                // if ( preg_match( '/class="og-url">(.*?)<\//is', $src, $matches) ) {
-                if ( $og_url = $px->bowl()->pull( 'og:url' ) ) {
-
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . $og_url . '" />'.'</head>', $src );
-
-                } else {
-
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . $px->conf()->scheme.'://'.$px->conf()->domain.$px->href( $px->req()->get_request_file_path() ) . '" />'.'</head>', $src );
-
-                }
-
-                // if ( preg_match( '/class="og-site_name">(.*?)<\//is', $src, $matches) ) {
-                if ( $og_site_name = $px->bowl()->pull( 'og:site_name' ) ) {
-
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:site_name" content="' . $og_site_name . '" />'.'</head>', $src );
-
-                }
-
-
-                // カスタム
+                // custom property
                 if ( ( $og_custom_property = $px->bowl()->pull( 'og:custom-property' )) &&
                      ( $og_custom_content = $px->bowl()->pull( 'og:custom-content' )) ) {
 
-                    $og_custom_property_ary = json_decode($og_custom_property);
-                    $og_custom_content_ary = json_decode($og_custom_content);
+                    $og_custom_property_ary = json_decode( $og_custom_property );
+                    $og_custom_content_ary = json_decode( $og_custom_content );
                     $count = 0;
 
-                    foreach ($og_custom_property_ary as $og_custom_property_val) {
+                    foreach ( $og_custom_property_ary as $og_custom_property_val ) {
 
-                        if ($og_custom_property_val && $og_custom_content_ary[$count]) {
+                        if ( $og_custom_property_val && $og_custom_content_ary[$count] ) {
 
-                            $src = preg_replace( '/<\/head>/is', '<meta property="' . $og_custom_property_val . '" content="' . $og_custom_content_ary[$count] . '" />'.'</head>', $src );
+                            if ( (empty( $custom_property_collection )) ||
+                                 (FALSE === array_search( $og_custom_property_val, $custom_property_collection ))) {
+                                $custom_property_collection[] = $og_custom_property_val;
+                            }
 
+                            $src = preg_replace( '/<\/head>/is', '<meta property="' . htmlspecialchars( $og_custom_property_val ) . '" content="' . htmlspecialchars( $og_custom_content_ary[$count] ) . '" />' . '</head>', $src );
                         }
 
                         $count++;
                     }
+
+                }
+
+                // og:title property
+                if ( (empty( $custom_property_collection )) ||
+                     (FALSE === array_search( 'og:title', $custom_property_collection ))) {
+
+                    if ( $og_title = $px->bowl()->pull( 'og:title' ) ) {
+
+                        $src = preg_replace( '/<\/head>/is', '<meta property="og:title" content="' . htmlspecialchars( $og_title ) . '" />' . '</head>', $src );
+
+                    }
+
+                }
+
+                // og:description property
+                if ( (empty( $custom_property_collection )) ||
+                     (FALSE === array_search( 'og:description', $custom_property_collection ))) {
+
+                    if ( $og_description = $px->bowl()->pull( 'og:description' ) ) {
+
+                        $src = preg_replace( '/<\/head>/is', '<meta property="og:description" content="' . htmlspecialchars( $og_description ) . '" />' . '</head>', $src );
+
+                    }
+
+                }
+
+                // og:image property
+                if ( (empty( $custom_property_collection )) ||
+                     (FALSE === array_search( 'og:image', $custom_property_collection ))) {
+
+                    if ( $og_image = $px->bowl()->pull( 'og:image' ) ) {
+
+                        if ( preg_match( '/<img.*src\s*=\s*[\"|\'](.*?)[\"|\'].*>/i', $og_image, $matches ) ) {
+
+                            // 指定されたファイルの拡張子が画像ファイルか判定
+                            if ( preg_match( "/.*?\.jpg|.*?\.png|.*?\.gif|.*?\.jpeg/i", $matches[1]) ) {
+
+                                $img_path = preg_replace( '/^\.\//', '', $px->href( $matches[1] ) ) ;
+                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $px->get_domain() . $px->href( $px->req()->get_request_file_path() ) . $img_path ) . '" />' . '</head>', $src );
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                // og:type property
+                if ( (empty( $custom_property_collection )) ||
+                     (FALSE === array_search( 'og:type', $custom_property_collection ))) {
+
+                    if ( $og_type = $px->bowl()->pull( 'og:type' ) ) {
+
+                        $src = preg_replace( '/<\/head>/is', '<meta property="og:type" content="' . htmlspecialchars( $og_type ) . '" />' . '</head>', $src );
+
+                    }
+
+                }
+
+                // og:url property
+                if ( (empty( $custom_property_collection )) ||
+                     (FALSE === array_search( 'og:url', $custom_property_collection ))) {
+
+                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . htmlspecialchars( $px->get_scheme() . '://' . $px->get_domain() . $px->href( $px->req()->get_request_file_path() ) ) . '" />' . '</head>', $src );
+
+                }
+
+                // og:site_name property
+                if ( (empty( $custom_property_collection )) ||
+                     (FALSE === array_search( 'og:site_name', $custom_property_collection ))) {
+                
+                    $src = preg_replace( '/<\/head>/is', '<meta property="og:site_name" content="' . htmlspecialchars( $px->conf()->name ) . '" />' . '</head>', $src );
+
                 }
 
             }
@@ -108,4 +133,5 @@ class extract{
 
         return true;
     }
+
 }
