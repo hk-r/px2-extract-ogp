@@ -32,9 +32,9 @@ class mainTest extends PHPUnit_Framework_TestCase{
 		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:custome1" content="カスタム項目1" />','/').'/s', $output) );
 		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:title" content="タイトルを設定します" />','/').'/s', $output) );
 		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:description" content="descriptionを設定します" />','/').'/s', $output) );
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:image" content="http:///sample_pages/training/index_files/resources/test_image.jpg" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:image" content="http://127.0.0.1/sample_pages/training/index_files/resources/test_image.jpg" />','/').'/s', $output) );
 		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:type" content="website" />','/').'/s', $output) );
-		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:url" content="http:///sample_pages/training/" />','/').'/s', $output) );
+		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:url" content="http://127.0.0.1/sample_pages/training/" />','/').'/s', $output) );
 		$this->assertEquals( 1, preg_match('/'.preg_quote('<meta property="og:site_name" content="Get start &quot;Pickles 2&quot; !" />','/').'/s', $output) );
 		
 		$output = $this->passthru( [

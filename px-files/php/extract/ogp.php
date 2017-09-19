@@ -25,6 +25,12 @@ class extract{
 
                 $custom_property_collection = array();
 
+                // domain
+                $domain = $px->get_domain();
+                if ( is_null($domain) ) {
+                    $domain = '127.0.0.1';
+                }
+
                 $src = mb_convert_encoding( $src, mb_internal_encoding(), "auto" );
 
                 // custom property
@@ -88,7 +94,7 @@ class extract{
                             if ( preg_match( "/.*?\.jpg|.*?\.png|.*?\.gif|.*?\.jpeg/i", $matches[1]) ) {
 
                                 $img_path = preg_replace( '/^\.\//', '', $px->href( $matches[1] ) ) ;
-                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $px->get_domain() . $px->href( $px->req()->get_request_file_path() ) . $img_path ) . '" />' . '</head>', $src );
+                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) . $img_path ) . '" />' . '</head>', $src );
 
                             }
 
@@ -114,7 +120,7 @@ class extract{
                 if ( (empty( $custom_property_collection )) ||
                      (FALSE === array_search( 'og:url', $custom_property_collection ))) {
 
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . htmlspecialchars( $px->get_scheme() . '://' . $px->get_domain() . $px->href( $px->req()->get_request_file_path() ) ) . '" />' . '</head>', $src );
+                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) ) . '" />' . '</head>', $src );
 
                 }
 
