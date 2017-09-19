@@ -16,12 +16,12 @@
       "dec": ""
      },
      {
-      "modId": "local:ogp/ogp",
+      "modId": "ogp:ogp/ogp",
       "fields": {
        "og-title": "タイトルを設定します",
        "og-description": "descriptionを設定します",
        "og-image": {
-        "resKey": "6f86d9710a8fd6d2c6f5ad673a4e03ed",
+        "resKey": "8622751d3ae4fb3c08d2f0eddaeb2b1b",
         "path": "./index_files/resources/test_image.jpg",
         "resType": "",
         "webUrl": ""
@@ -29,7 +29,7 @@
        "og-type": "website",
        "og_loop": [
         {
-         "modId": "local:ogp/ogp",
+         "modId": "ogp:ogp/ogp",
          "fields": {
           "og-custom-property": "og:custome1",
           "og-custom-content": "カスタム項目1"
