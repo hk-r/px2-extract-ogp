@@ -1,5 +1,5 @@
 {
-    "name": "hk-r/px2-exract-ogp",
+    "name": "hk-r/px2-extract-ogp",
     "description": "OGP情報を抽出するpickles2プラグインです。",
     "keywords": ["pickles2"],
     "license": "MIT",
