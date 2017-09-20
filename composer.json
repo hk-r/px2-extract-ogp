@@ -38,7 +38,7 @@
     },
     "extra": {
         "px2package": {
-            "name": "px2-exract-ogp",
+            "name": "px2-extract-ogp",
             "type": "processor"
         }
     }

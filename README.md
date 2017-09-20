@@ -86,7 +86,6 @@ MIT License
 ## 作者 - Author
 
 - (C)Kyota Hiyoshi <hiyoshi-kyota@imjp.co.jp>
-- website: <http://www.pxt.jp/>
 
 
 ## for Developer
