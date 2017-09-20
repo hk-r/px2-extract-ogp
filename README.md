@@ -36,6 +36,22 @@ $ composer update
 
 設定ファイル `config.php` (通常は `./px-files/config.php`) を編集します。
 
+- スキーマの設定  
+`$conf->scheme` に、スキーマを設定します。  
+`$conf->scheme` を設定しないと、望ましい結果が得られないことがありますので、正しく設定してください。
+
+```php
+	$conf->scheme = 'http';
+```
+
+- ドメインの設定  
+`$conf->domain` に、ドメインを設定します。  
+`$conf->domain` を設定しないと、望ましい結果が得られないことがありますので、正しく設定してください。
+
+```php
+	$conf->domain = 'www.example.com';
+```
+
 - OGP自動生成の処理追加  
 `$conf->funcs->processor->html` に、処理 `'hk\pickles2\extractOgp\extract::exec'` を追加します。
 
@@ -47,7 +63,7 @@ $ composer update
 ```
 
 - OGP設定用のモジュールを追加  
-`$conf->funcs->processor->html` に、処理 `'hk\pickles2\extractOgp\extract::exec'` を追加します。
+`$conf->plugins->px2dt->paths_module_template` に、モジュール定義 `"OGP" => "./vendor/hk-r/px2-extract-ogp/modules/"` を追加します。
 
 ```php
 	$conf->plugins->px2dt->paths_module_template = [
