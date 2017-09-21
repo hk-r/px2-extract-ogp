@@ -16,8 +16,10 @@ return call_user_func( function(){
 	$conf->name = 'Get start "Pickles 2" !';
 	/** コピーライト表記 */
 	$conf->copyright = 'Pickles 2 Project';
+	/** スキーマ(本番環境のスキーマ名) */
+	$conf->scheme = 'http';
 	/** ドメイン(本番環境のドメイン) */
-	$conf->domain = null;
+	$conf->domain = 'www.example.com';
 	/** コンテンツルートディレクトリ */
 	$conf->path_controot = '/';
 
@@ -97,6 +99,12 @@ return call_user_func( function(){
 		'*/.svn/*' => 'ignore' ,
 		'*/.git/*' => 'ignore' ,
 		'*/.gitignore' => 'ignore' ,
+
+		'/modules/*' => 'ignore' ,
+		'/tests/*' => 'ignore' ,
+		'/LICENSE' => 'ignore' ,
+		'/phpunit.xml' => 'ignore' ,
+		'/.travis.yml' => 'ignore' ,
 
 		'*.html' => 'html' ,
 		'*.htm' => 'html' ,
@@ -217,7 +225,7 @@ return call_user_func( function(){
 			'attr_bowl_name_by'=>'data-contents-area',
 			'default_theme_id'=>'pickles2'
 		]).')' ,
-		
+
 		// OGPタグ自動抽出
 		'hk\pickles2\extractOgp\extract::exec' ,
 
@@ -305,7 +313,7 @@ return call_user_func( function(){
 	/** broccoliモジュールセットの登録 */
 	$conf->plugins->px2dt->paths_module_template = [
 		"PlainHTMLElements" => "./vendor/broccoli-html-editor/broccoli-module-plain-html-elements/modules/",
-		"local" => "./px-files/modules/",
+		"OGP" => "./modules/",
 		"FESS" => "./vendor/broccoli-html-editor/broccoli-module-fess/modules/"
 	];
 

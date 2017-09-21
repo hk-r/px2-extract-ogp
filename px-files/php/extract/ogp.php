@@ -27,7 +27,8 @@ class extract{
 
                 // domain
                 $domain = $px->get_domain();
-                if ( is_null($domain) ) {
+                if ( !strlen($domain) ) {
+                    $px->error('[px2-extract-ogp] $conf->domain is EMPTY. Check config.php and set domain name of your website. (ex: www.example.com, 127.0.0.1, hogefuga.com:8080, etc...)');
                     $domain = '127.0.0.1';
                 }
 
@@ -127,7 +128,7 @@ class extract{
                 // og:site_name property
                 if ( (empty( $custom_property_collection )) ||
                      (FALSE === array_search( 'og:site_name', $custom_property_collection ))) {
-                
+
                     $src = preg_replace( '/<\/head>/is', '<meta property="og:site_name" content="' . htmlspecialchars( $px->conf()->name ) . '" />' . '</head>', $src );
 
                 }
