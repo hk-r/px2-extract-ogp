@@ -94,8 +94,12 @@ class extract{
                             // 指定されたファイルの拡張子が画像ファイルか判定
                             if ( preg_match( "/.*?\.jpg|.*?\.png|.*?\.gif|.*?\.jpeg/i", $matches[1]) ) {
 
+
                                 $img_path = preg_replace( '/^\.\//', '', $px->href( $matches[1] ) ) ;
-                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) . $img_path ) . '" />' . "\n" . '</head>', $src );
+                                if( !preg_match( '/^\//', $img_path ) ){
+                                    $img_path = $px->fs()->get_realpath( dirname($px->req()->get_request_file_path()) . '/' . $img_path );
+                                }
+                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $img_path ) ) . '" />' . '</head>', $src );
 
                             }
 
