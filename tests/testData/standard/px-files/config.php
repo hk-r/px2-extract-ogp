@@ -306,7 +306,7 @@ return call_user_func( function(){
 	$conf->plugins->px2dt->paths_module_template = [
 		"PlainHTMLElements" => "./../../../vendor/broccoli-html-editor/broccoli-module-plain-html-elements/modules/",
 		"local" => "./px-files/modules/",
-		"ogp" => "./../../../px-files/modules/",
+		"ogp" => "./../../../modules/",
 		"FESS" => "./../../../vendor/broccoli-html-editor/broccoli-module-fess/modules/"
 	];
 
