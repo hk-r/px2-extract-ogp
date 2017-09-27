@@ -53,10 +53,19 @@ $ composer update
 ```
 
 - OGP自動生成の処理追加  
-`$conf->funcs->processor->html` に、処理 `'hk\pickles2\extractOgp\extract::exec'` を追加します。
+`$conf->funcs->processor->html` のテーマの処理の後に、本プラグインの処理 `'hk\pickles2\extractOgp\extract::exec'` を追加します。
 
 ```php
 	$conf->funcs->processor->html = array(
+		// テーマ
+		'theme'=>'tomk79\pickles2\multitheme\theme::exec('.json_encode([
+			'param_theme_switch'=>'THEME',
+			'cookie_theme_switch'=>'THEME',
+			'path_theme_collection'=>'./px-files/themes/',
+			'attr_bowl_name_by'=>'data-contents-area',
+			'default_theme_id'=>'pickles2'
+		]).')' ,
+
 		// OGPタグ自動抽出
 		'hk\pickles2\extractOgp\extract::exec' ,
 	);
