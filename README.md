@@ -82,7 +82,7 @@ $ composer update
 
 ## 更新履歴 - Change log
 
-### hk-r/px2-extract-ogp 1.0.0 (2017年xx月xx日)
+### hk-r/px2-extract-ogp 1.0.0-beta.1 (2017年9月27日)
 
 - Initial Release.
 
