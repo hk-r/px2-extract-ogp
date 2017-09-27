@@ -51,7 +51,7 @@ class extract{
                                 $custom_property_collection[] = $og_custom_property_val;
                             }
 
-                            $src = preg_replace( '/<\/head>/is', '<meta property="' . htmlspecialchars( $og_custom_property_val ) . '" content="' . htmlspecialchars( $og_custom_content_ary[$count] ) . '" />' . '</head>', $src );
+                            $src = preg_replace( '/<\/head>/is', '<meta property="' . htmlspecialchars( $og_custom_property_val ) . '" content="' . htmlspecialchars( $og_custom_content_ary[$count] ) . '" />' . "\n" . '</head>', $src );
                         }
 
                         $count++;
@@ -65,7 +65,7 @@ class extract{
 
                     if ( $og_title = $px->bowl()->pull( 'og:title' ) ) {
 
-                        $src = preg_replace( '/<\/head>/is', '<meta property="og:title" content="' . htmlspecialchars( $og_title ) . '" />' . '</head>', $src );
+                        $src = preg_replace( '/<\/head>/is', '<meta property="og:title" content="' . htmlspecialchars( $og_title ) . '" />' . "\n" . '</head>', $src );
 
                     }
 
@@ -77,7 +77,7 @@ class extract{
 
                     if ( $og_description = $px->bowl()->pull( 'og:description' ) ) {
 
-                        $src = preg_replace( '/<\/head>/is', '<meta property="og:description" content="' . htmlspecialchars( $og_description ) . '" />' . '</head>', $src );
+                        $src = preg_replace( '/<\/head>/is', '<meta property="og:description" content="' . htmlspecialchars( $og_description ) . '" />' . "\n" . '</head>', $src );
 
                     }
 
@@ -95,7 +95,7 @@ class extract{
                             if ( preg_match( "/.*?\.jpg|.*?\.png|.*?\.gif|.*?\.jpeg/i", $matches[1]) ) {
 
                                 $img_path = preg_replace( '/^\.\//', '', $px->href( $matches[1] ) ) ;
-                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) . $img_path ) . '" />' . '</head>', $src );
+                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) . $img_path ) . '" />' . "\n" . '</head>', $src );
 
                             }
 
@@ -111,7 +111,7 @@ class extract{
 
                     if ( $og_type = $px->bowl()->pull( 'og:type' ) ) {
 
-                        $src = preg_replace( '/<\/head>/is', '<meta property="og:type" content="' . htmlspecialchars( $og_type ) . '" />' . '</head>', $src );
+                        $src = preg_replace( '/<\/head>/is', '<meta property="og:type" content="' . htmlspecialchars( $og_type ) . '" />' . "\n" . '</head>', $src );
 
                     }
 
@@ -121,7 +121,7 @@ class extract{
                 if ( (empty( $custom_property_collection )) ||
                      (FALSE === array_search( 'og:url', $custom_property_collection ))) {
 
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) ) . '" />' . '</head>', $src );
+                    $src = preg_replace( '/<\/head>/is', '<meta property="og:url" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $px->req()->get_request_file_path() ) ) . '" />' . "\n" . '</head>', $src );
 
                 }
 
@@ -129,7 +129,7 @@ class extract{
                 if ( (empty( $custom_property_collection )) ||
                      (FALSE === array_search( 'og:site_name', $custom_property_collection ))) {
 
-                    $src = preg_replace( '/<\/head>/is', '<meta property="og:site_name" content="' . htmlspecialchars( $px->conf()->name ) . '" />' . '</head>', $src );
+                    $src = preg_replace( '/<\/head>/is', '<meta property="og:site_name" content="' . htmlspecialchars( $px->conf()->name ) . '" />' . "\n" . '</head>', $src );
 
                 }
 
