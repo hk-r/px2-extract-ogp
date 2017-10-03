@@ -99,7 +99,7 @@ class extract{
                                 if( !preg_match( '/^\//', $img_path ) ){
                                     $img_path = $px->fs()->get_realpath( dirname($px->req()->get_request_file_path()) . '/' . $img_path );
                                 }
-                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $img_path ) ) . '" />' . '</head>', $src );
+                                $src = preg_replace( '/<\/head>/is', '<meta property="og:image" content="' . htmlspecialchars( $px->get_scheme() . '://' . $domain . $px->href( $img_path ) ) . '" />' . "\n" . '</head>', $src );
 
                             }
 
