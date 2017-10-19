@@ -82,6 +82,11 @@ $ composer update
 
 ## 更新履歴 - Change log
 
+### hk-r/px2-extract-ogp 1.0.0 (2017年10月19日)
+
+- og:imageの後ろだけ改行されない問題を修正
+- CIサービス(Travis CI)の設定ファイルを追加
+
 ### hk-r/px2-extract-ogp 1.0.0-beta.1 (2017年9月27日)
 
 - Initial Release.
